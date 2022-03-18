@@ -22,7 +22,7 @@ public class Vehicle {
 	
 	public Vehicle(String make, String model, float value, Date datePurchased, Condition condition) {
 		super();
-		this.id = counter++;
+		this.id = ++counter;
 		this.make = make;
 		this.model = model;
 		this.value = value;
@@ -79,16 +79,16 @@ public class Vehicle {
 		case NEW:
 			return (int) this.value/10;
 		case FUNCTIONING:
-			return (int) this.value/30;
+			return (int) this.value/3;
 		case DISREPAIR:
-			return (int) this.value/50;
+			return (int) this.value/2;
 		default:
-			return (int) this.value/50;
+			return (int) this.value/2;
 		}
 	}
 	
 	public void repair() {
-		System.out.println("Repair cost: " + this.calculateRepairCost());
+		System.out.println("Repair cost: £" + this.calculateRepairCost());
 		System.out.printf("Fixing to %s condition...", Condition.FUNCTIONING.toString());
 		this.condition = Condition.FUNCTIONING;
 	}
@@ -100,8 +100,8 @@ public class Vehicle {
 	}
 	
 	public String toString() {
-		return String.format("%s: %s \nValued at: £%s \nPurchased on: %s \nCondition: %s \nNotes: %s", 
-				make, model, value, datePurchased, condition.toString(), notes);
+		return String.format("#%s===========\n%s: %s \nValued at: £%s \nPurchased on: %s \nCondition: %s \nNotes: %s\n", 
+				id, make, model, value, datePurchased, condition.toString(), notes);
 	}
 
 }
